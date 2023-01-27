@@ -55,6 +55,6 @@ public class Main {
         conclusion(bus4);
     }
     private static void conclusion (Transport<?> transport){
-        System.out.println("Водитель "+transport.getDriver().getFIO()+" управляет автомобилем "+ transport.getBrand()+" и будет участвовать в заезде");
+        System.out.println(" Водитель "+transport.getDriver().getFIO()+" управляет автомобилем "+ transport.getBrand()+" и будет участвовать в заезде");
     }
 }
