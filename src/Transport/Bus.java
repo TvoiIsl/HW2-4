@@ -1,9 +1,11 @@
 package Transport;
 
 public class Bus extends Transport<DriverD> {
+    private Capacity capacity;
 
-    public Bus(String brand, String model, double engineCapacity, DriverD driver) {
+    public Bus(String brand, String model, double engineCapacity, DriverD driver, Capacity capacity) {
         super(brand, model, engineCapacity, driver);
+        this.capacity=capacity;
     }
 
     @Override
@@ -34,5 +36,25 @@ public class Bus extends Transport<DriverD> {
         int maxSpeed = 160;
         int speed = (int) (minSpeed + (maxSpeed-minSpeed)*Math.random());
         System.out.println("Максимальная скорость автобуса"+speed);
+    }
+
+    public Capacity getCapacity() {
+        return capacity;
+    }
+    public void printType() {
+        if(getCapacity() == Capacity.ESPECIALLY_SMALL ){
+            System.out.println("До 10");
+        } else if(getCapacity() == Capacity.SMALL) {
+            System.out.println("До до 25");
+        }else if(getCapacity() == Capacity.AVERAGE) {
+            System.out.println("От 40 до 50");
+        }else if(getCapacity() == Capacity.BIG) {
+            System.out.println("От 60 до 80");}
+        else if(getCapacity() == Capacity.EXTRA_LARGE) {
+            System.out.println("От 100 до 120");}
+        else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+
     }
 }
