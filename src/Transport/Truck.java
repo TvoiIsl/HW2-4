@@ -2,11 +2,13 @@ package Transport;
 
 import Transport.Exception.DiagnosticException;
 
+import java.util.List;
+
 public class Truck extends Transport<DriverC>{
     private LoadCapacity loadCapacity;
 
-    public Truck(String brand, String model, double engineCapacity, DriverC driver,LoadCapacity loadCapacity) {
-        super(brand, model, engineCapacity, driver);
+    public Truck(String brand, String model, double engineCapacity, DriverC driver, List<Mechanic> mechanic, LoadCapacity loadCapacity) {
+        super(brand, model, engineCapacity, driver,mechanic);
         this.loadCapacity=loadCapacity;
     }
 
