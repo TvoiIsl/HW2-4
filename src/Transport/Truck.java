@@ -1,11 +1,22 @@
 package Transport;
 
+import Transport.Exception.DiagnosticException;
+
 public class Truck extends Transport<DriverC>{
     private LoadCapacity loadCapacity;
 
     public Truck(String brand, String model, double engineCapacity, DriverC driver,LoadCapacity loadCapacity) {
         super(brand, model, engineCapacity, driver);
         this.loadCapacity=loadCapacity;
+    }
+
+    @Override
+    public boolean diagnostics() throws DiagnosticException {
+        if (getDriver().isDriverLicense()==false){
+            throw new DiagnosticException("Необходимо укзать тип прав");
+        }else {
+            return true;
+        }
     }
 
     @Override

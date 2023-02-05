@@ -1,11 +1,18 @@
 package Transport;
 
+import Transport.Exception.DiagnosticException;
+
 public class Bus extends Transport<DriverD> {
     private Capacity capacity;
 
     public Bus(String brand, String model, double engineCapacity, DriverD driver, Capacity capacity) {
         super(brand, model, engineCapacity, driver);
         this.capacity=capacity;
+    }
+
+    @Override
+    public boolean diagnostics() throws DiagnosticException {
+        return false;
     }
 
     @Override

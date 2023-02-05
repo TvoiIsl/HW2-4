@@ -1,9 +1,10 @@
 import Transport.*;
+import Transport.Exception.DiagnosticException;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Легковые авто");
-        DriverB driverB1 = new DriverB("MishaB",true,3);
+        DriverB driverB1 = new DriverB("MishaB",false,3);
         PassengerCar car1 = new PassengerCar("Lada", "Granta", 1.6, driverB1, BodyType.SEDAN);
         System.out.println(car1);
         DriverB driverB2 = new DriverB("MaxB",true,2);
@@ -41,18 +42,29 @@ public class Main {
         DriverD driverD4 = new DriverD("RomaC",true,3);
         Bus bus4 = new Bus("PAZ", "X", 5.5,driverD4, Capacity.SMALL);
         System.out.println(bus4);
-        conclusion(car1);
-        conclusion(car2);
-        conclusion(car3);
-        conclusion(car4);
-        conclusion(truck1);
-        conclusion(truck2);
-        conclusion(truck3);
-        conclusion(truck4);
-        conclusion(bus1);
-        conclusion(bus2);
-        conclusion(bus3);
-        conclusion(bus4);
+//        conclusion(car1);
+//        conclusion(car2);
+//        conclusion(car3);
+//        conclusion(car4);
+//        conclusion(truck1);
+//        conclusion(truck2);
+//        conclusion(truck3);
+//        conclusion(truck4);
+//        conclusion(bus1);
+//        conclusion(bus2);
+//        conclusion(bus3);
+//        conclusion(bus4);
+
+        try {
+            car1.diagnostics();
+        } catch (DiagnosticException e) {
+            System.out.println("Ошибка при диагностики транспорта");
+        }
+        try {
+            bus1.diagnostics();
+        } catch (DiagnosticException e) {
+            System.out.println("Ошибка при диагностики транспорта");
+        }
 
     }
     private static void conclusion (Transport<?> transport){
