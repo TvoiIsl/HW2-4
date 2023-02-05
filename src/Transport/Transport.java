@@ -2,18 +2,17 @@ package Transport;
 
 import Transport.Exception.DiagnosticException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineCapacity;
     private T driver;
-    private List<Mechanic> mechanics ;
+    private Map<Transport,Mechanic> mechanics ;
 
     public abstract boolean diagnostics() throws DiagnosticException;
-    public Transport(String brand, String model, double engineCapacity,T driver, List<Mechanic> mechanics) {
+    public Transport(String brand, String model, double engineCapacity, T driver, Map<Transport,Mechanic> mechanics) {
         if (brand==null || brand.isEmpty()){
             brand="default";
         }
@@ -31,11 +30,11 @@ public abstract class Transport<T extends Driver> implements Competing {
         setMechanic(mechanics);
     }
 
-    public List<Mechanic> getMechanic() {
+    public Map<Transport, Mechanic> getMechanic() {
         return mechanics;
     }
 
-    public void setMechanic(List<Mechanic> mechanic) {
+    public void setMechanic(Map<Transport, Mechanic> mechanic) {
         this.mechanics = mechanic;
     }
 

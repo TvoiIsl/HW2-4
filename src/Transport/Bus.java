@@ -2,12 +2,12 @@ package Transport;
 
 import Transport.Exception.DiagnosticException;
 
-import java.util.List;
+import java.util.Map;
 
 public class Bus extends Transport<DriverD> {
     private Capacity capacity;
 
-    public Bus(String brand, String model, double engineCapacity, DriverD driver, List<Mechanic> mechanic, Capacity capacity) {
+    public Bus(String brand, String model, double engineCapacity, DriverD driver, Map<Transport,Mechanic> mechanic, Capacity capacity) {
         super(brand, model, engineCapacity, driver, mechanic);
         this.capacity=capacity;
     }

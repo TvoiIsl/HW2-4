@@ -2,18 +2,29 @@ import Transport.*;
 import Transport.Exception.DiagnosticException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
         ServiceStation serviceStation= new ServiceStation();
 
         List<Transport> cars = new ArrayList<>();
-        List<Mechanic> mechanics = new ArrayList<>();
+        Map<Transport,Mechanic> mechanics = new HashMap<>();
 
-        Mechanic Vadik = new Mechanic("Vadik", "WAG");
-        Mechanic Slava = new Mechanic("Slava", "BMW");
-        Mechanic Yarik = new Mechanic("Yarik", "MAN");
+        Mechanic VadikB = new Mechanic("VadikB", "WAG");
+        Mechanic SlavaB = new Mechanic("SlavaB", "BMW");
+        Mechanic YarikB = new Mechanic("YarikB", "MAN");
+        Mechanic JohnB = new Mechanic("JohnB", "Dodge");
+        Mechanic VadikC = new Mechanic("VadikC", "WAG");
+        Mechanic SlavaC = new Mechanic("SlavaC", "BMW");
+        Mechanic YarikC = new Mechanic("YarikC", "MAN");
+        Mechanic JohnC = new Mechanic("JohnC", "Dodge");
+        Mechanic VadikD = new Mechanic("VadikD", "WAG");
+        Mechanic SlavaD = new Mechanic("SlavaD", "BMW");
+        Mechanic YarikD = new Mechanic("YarikD", "MAN");
+        Mechanic JohnD = new Mechanic("JohnD", "Dodge");
 
         DriverB driverB1 = new DriverB("MishaB",false,3);
         DriverB driverB2 = new DriverB("MaxB",true,2);
@@ -42,16 +53,17 @@ public class Main {
         Bus bus3 = new Bus("MAN", "Lion's Coach", 6,driverD3, mechanics,Capacity.BIG);
         Bus bus4 = new Bus("PAZ", "X", 5.5,driverD4, mechanics,Capacity.SMALL);
 
+        serviceStation.addMechanic(car1,VadikB);
+        serviceStation.addMechanic(car2,VadikB);
+//        mechanics.add(Vadik);
+//        mechanics.add(Slava);
+//        mechanics.add(Yarik);
+//        printSs(car1);
 
-        mechanics.add(Vadik);
-        mechanics.add(Slava);
-        mechanics.add(Yarik);
-        printSs(car1);
-
-        serviceStation.autoQueue(car2);
-        serviceStation.autoQueue(car3);
+//        serviceStation.autoQueue(car2);
+//        serviceStation.autoQueue(car3);
 //        serviceStation.passed();
-        serviceStation.queue();
+//        serviceStation.queue();
 
 //        System.out.println("Легковые авто");
 //        System.out.println(car1);
