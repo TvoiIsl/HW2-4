@@ -55,6 +55,10 @@ public class Main {
 
         serviceStation.addMechanic(car1,VadikB);
         serviceStation.addMechanic(car2,VadikB);
+        serviceStation.addDriver(driverB1);
+        serviceStation.addDriver(driverB3);
+        serviceStation.addDriver(driverB3);
+        serviceStation.allDriver();
 //        mechanics.add(Vadik);
 //        mechanics.add(Slava);
 //        mechanics.add(Yarik);
