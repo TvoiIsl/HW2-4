@@ -1,11 +1,14 @@
 package Transport;
 
+import Transport.Exception.DiagnosticException;
+
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineCapacity;
     private T driver;
 
+    public abstract boolean diagnostics() throws DiagnosticException;
     public Transport(String brand, String model, double engineCapacity,T driver) {
         if (brand==null || brand.isEmpty()){
             brand="default";
@@ -40,6 +43,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     }
     public abstract void startMoving();
     public abstract void finishMoving();
+    public abstract void printType();
     @Override
     public String toString() {
         return "Марка: " + brand +

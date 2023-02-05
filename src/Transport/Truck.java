@@ -1,9 +1,22 @@
 package Transport;
 
-public class Truck extends Transport<DriverC>{
+import Transport.Exception.DiagnosticException;
 
-    public Truck(String brand, String model, double engineCapacity, DriverC driver) {
+public class Truck extends Transport<DriverC>{
+    private LoadCapacity loadCapacity;
+
+    public Truck(String brand, String model, double engineCapacity, DriverC driver,LoadCapacity loadCapacity) {
         super(brand, model, engineCapacity, driver);
+        this.loadCapacity=loadCapacity;
+    }
+
+    @Override
+    public boolean diagnostics() throws DiagnosticException {
+        if (getDriver().isDriverLicense()==false){
+            throw new DiagnosticException("Необходимо укзать тип прав");
+        }else {
+            return true;
+        }
     }
 
     @Override
@@ -34,5 +47,20 @@ public class Truck extends Transport<DriverC>{
         int maxSpeed = 180;
         int speed = (int) (minSpeed + (maxSpeed-minSpeed)*Math.random());
         System.out.println("Максимальная скорость грузового авто "+speed);
+    }
+
+    public LoadCapacity getLoadCapacity() {
+        return loadCapacity;
+    }
+    public void printType() {
+        if (getLoadCapacity() == LoadCapacity.N1){
+            System.out.println("До 3.5");
+        }else if(getLoadCapacity() == LoadCapacity.N2){
+            System.out.println("От 3.5 до 12");
+        } else if (getLoadCapacity() == LoadCapacity.N3){
+            System.out.println("От 12");
+        } else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
     }
 }
