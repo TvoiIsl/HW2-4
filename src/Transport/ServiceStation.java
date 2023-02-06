@@ -6,13 +6,20 @@ public class ServiceStation {
     Map<Transport,Mechanic>mechanics=new HashMap<>();
     Set<Driver>driver=new HashSet<>();
     public void addMechanic(Transport transport,Mechanic mechanic){
-        if (!mechanics.containsKey(transport)&!mechanics.containsValue(mechanic)){
+
             mechanics.put(transport,mechanic);
-            System.out.println("ТС "+transport.getBrand()+" имеет механика "+mechanic.getName()+" и относится к компании "+mechanic.getCompany());
-        }else {
-            System.out.println("Без повторов");
-        }
+            System.out.println("ТС "+transport.getBrand()+" добавлен механик "+mechanic.getName()+" из компании "+mechanic.getCompany());
+
     }
+    public void allMechanic(){
+
+        System.out.println("Список общий:");
+        for (Map.Entry<Transport,Mechanic> mechanicEntry: mechanics.entrySet()){
+        System.out.println("ТС "+mechanicEntry.getKey().getBrand()+" имеет механика "+mechanicEntry.getValue().getName()+" и относится к компании "+mechanicEntry.getValue().getCompany());
+
+    }
+    }
+
 
     public void addDriver(Driver as){
         driver.add(as);
