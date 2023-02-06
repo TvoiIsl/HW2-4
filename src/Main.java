@@ -50,8 +50,10 @@ public class Main {
 
         serviceStation.autoQueue(car2);
         serviceStation.autoQueue(car3);
+        serviceStation.autoQueue(car4);
+
 //        serviceStation.passed();
-        serviceStation.queue();
+        serviceStation.passed();
 
 //        System.out.println("Легковые авто");
 //        System.out.println(car1);

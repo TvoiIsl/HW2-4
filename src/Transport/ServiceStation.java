@@ -1,25 +1,30 @@
 package Transport;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class ServiceStation {
-    List<Transport> serviceStation = new ArrayList<>();
-    public void queue(){
-        for (int i=0;i<serviceStation.size(); i++){
-            System.out.println(serviceStation.get(i)+" в очереди.");
-        }
-    }
+    Queue serviceStation = new LinkedList();
 
-    public void autoQueue(Transport car){
-        serviceStation.add(car);
-        System.out.println(car.getBrand()+ " добавить ТС в очередь");
+
+    public void autoQueue(Transport transport){
+        boolean check = transport instanceof Bus;
+        if( check != true){
+            serviceStation.add(transport);
+            System.out.println(transport.getBrand()+ " добавить ТС в очередь");
+        }else {
+            System.out.println("Автобусам нельзя в сервис!");
+        }
+
     }
     public void technicalInspection(){
         System.out.println("Провести техосмотр авто");
     }
     public void passed (){
-        serviceStation.remove(0);
-        System.out.println("ТС прошело ТО");
+        System.out.println("Машина продеагностирована");
+        serviceStation.poll();
+        System.out.println("ТС ждет ТО " + serviceStation.size());
     }
 }
