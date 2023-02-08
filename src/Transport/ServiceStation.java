@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Queue;
 
 public class ServiceStation {
-    Queue serviceStation = new LinkedList();
+    private Queue serviceStation = new LinkedList();
 
 
     public void autoQueue(Transport transport){
         boolean check = transport instanceof Bus;
-        if( check != true){
+        if( !check ){
             serviceStation.add(transport);
             System.out.println(transport.getBrand()+ " добавить ТС в очередь");
         }else {
@@ -23,7 +23,7 @@ public class ServiceStation {
         System.out.println("Провести техосмотр авто");
     }
     public void passed (){
-        System.out.println("Машина продеагностирована");
+        System.out.println("Машина продиагностирована");
         serviceStation.poll();
         System.out.println("ТС ждет ТО " + serviceStation.size());
     }
