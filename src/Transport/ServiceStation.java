@@ -13,7 +13,7 @@ public class ServiceStation {
         boolean check = transport instanceof Bus;
         if( !check ){
             serviceStation.add(transport);
-            System.out.println(transport.getBrand()+ " добавить ТС в очередь");
+            System.out.println(transport.getBrand()+ " добавить ТС в очередь!");
         }else {
             System.out.println("Автобусам нельзя в сервис!");
         }
