@@ -6,11 +6,25 @@ public class ServiceStation {
     Map<Transport,Mechanic>mechanics=new HashMap<>();
     Set<Driver>driver=new HashSet<>();
     public void addMechanic(Transport transport,Mechanic mechanic){
-
-            mechanics.put(transport,mechanic);
+        mechanics.put(transport,mechanic);
             System.out.println("ТС "+transport.getBrand()+" добавлен механик "+mechanic.getName()+" из компании "+mechanic.getCompany());
 
+
     }
+    public boolean equals(Transport transport) {
+
+        if (mechanics.equals(transport) ){
+            return true;
+        }
+       return true;
+    }
+    @Override
+    public int hashCode() {
+
+        int m = mechanics.hashCode();
+        return m;
+    }
+
     public void allMechanic(){
 
         System.out.println("Список общий:");
