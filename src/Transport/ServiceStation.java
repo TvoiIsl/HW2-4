@@ -3,8 +3,9 @@ package Transport;
 import java.util.*;
 
 public class ServiceStation {
-    Map<Transport,Mechanic>mechanics=new HashMap<>();
-    Set<Driver>driver=new HashSet<>();
+//    private Queue serviceStation = new LinkedList();
+    private Map<Transport,Mechanic>mechanics=new HashMap<>();
+    private Set<Driver>driver=new HashSet<>();
     public void addMechanic(Transport transport,Mechanic mechanic){
         mechanics.put(transport,mechanic);
             System.out.println("ТС "+transport.getBrand()+" добавлен механик "+mechanic.getName()+" из компании "+mechanic.getCompany());
