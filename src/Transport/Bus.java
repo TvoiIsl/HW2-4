@@ -3,14 +3,30 @@ package Transport;
 import Transport.Exception.DiagnosticException;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class Bus extends Transport<DriverD> {
     private Capacity capacity;
+//    private Map<Transport,Mechanic> mechanic ;
 
     public Bus(String brand, String model, double engineCapacity, DriverD driver, Map<Transport,Mechanic> mechanic, Capacity capacity) {
         super(brand, model, engineCapacity, driver, mechanic);
         this.capacity=capacity;
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        if (!super.equals(o)) return false;
+//        Bus bus = (Bus) o;
+//        return mechanic.equals(bus.mechanic);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(super.hashCode(), mechanic);
+//    }
 
     @Override
     public boolean diagnostics() throws DiagnosticException {

@@ -12,19 +12,6 @@ public class ServiceStation {
 
 
     }
-    public boolean equals(Transport transport) {
-
-        if (mechanics.equals(transport) ){
-            return true;
-        }
-       return true;
-    }
-    @Override
-    public int hashCode() {
-
-        int m = mechanics.hashCode();
-        return m;
-    }
 
     public void allMechanic(){
 

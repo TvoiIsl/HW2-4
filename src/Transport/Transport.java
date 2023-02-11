@@ -3,16 +3,17 @@ package Transport;
 import Transport.Exception.DiagnosticException;
 
 import java.util.Map;
+import java.util.Objects;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineCapacity;
     private T driver;
-    private Map<Transport,Mechanic> mechanics ;
+    private Map<Transport,Mechanic> mechanic ;
 
     public abstract boolean diagnostics() throws DiagnosticException;
-    public Transport(String brand, String model, double engineCapacity, T driver, Map<Transport,Mechanic> mechanics) {
+    public Transport(String brand, String model, double engineCapacity, T driver, Map<Transport,Mechanic> mechanic) {
         if (brand==null || brand.isEmpty()){
             brand="default";
         }
@@ -27,15 +28,28 @@ public abstract class Transport<T extends Driver> implements Competing {
             this.engineCapacity = engineCapacity;
         }
         setDriver(driver);
-        setMechanic(mechanics);
+        setMechanic(mechanic);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return mechanic.equals(transport.mechanic);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mechanic);
     }
 
     public Map<Transport, Mechanic> getMechanic() {
-        return mechanics;
+        return mechanic;
     }
 
     public void setMechanic(Map<Transport, Mechanic> mechanic) {
-        this.mechanics = mechanic;
+        this.mechanic = mechanic;
     }
 
     public String getBrand() {
