@@ -23,8 +23,11 @@ public class ServiceStation {
         System.out.println("Провести техосмотр авто");
     }
     public void passed (){
-        System.out.println("Машина продиагностирована");
-        serviceStation.poll();
-        System.out.println("ТС ждет ТО " + serviceStation.size());
+
+//        serviceStation.poll();
+        if (serviceStation.poll()!=null){
+            System.out.println("Машина продиагностирована");
+            System.out.println("ТС ждет ТО " + serviceStation.size());
+        }
     }
 }
