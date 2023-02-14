@@ -1,12 +1,19 @@
 package Transport;
 
+import Transport.Exception.DiagnosticException;
+
+import java.util.Map;
+import java.util.Objects;
+
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineCapacity;
     private T driver;
+    private Map<Transport,Mechanic> mechanic ;
 
-    public Transport(String brand, String model, double engineCapacity,T driver) {
+    public abstract boolean diagnostics() throws DiagnosticException;
+    public Transport(String brand, String model, double engineCapacity, T driver, Map<Transport,Mechanic> mechanic) {
         if (brand==null || brand.isEmpty()){
             brand="default";
         }
@@ -21,6 +28,28 @@ public abstract class Transport<T extends Driver> implements Competing {
             this.engineCapacity = engineCapacity;
         }
         setDriver(driver);
+        setMechanic(mechanic);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return mechanic.equals(transport.mechanic);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mechanic);
+    }
+
+    public Map<Transport, Mechanic> getMechanic() {
+        return mechanic;
+    }
+
+    public void setMechanic(Map<Transport, Mechanic> mechanic) {
+        this.mechanic = mechanic;
     }
 
     public String getBrand() {
@@ -40,6 +69,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     }
     public abstract void startMoving();
     public abstract void finishMoving();
+    public abstract void printType();
     @Override
     public String toString() {
         return "Марка: " + brand +

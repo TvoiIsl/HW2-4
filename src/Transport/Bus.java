@@ -1,9 +1,51 @@
 package Transport;
 
-public class Bus extends Transport<DriverD> {
+import Transport.Exception.DiagnosticException;
 
-    public Bus(String brand, String model, double engineCapacity, DriverD driver) {
-        super(brand, model, engineCapacity, driver);
+import java.util.Map;
+import java.util.Objects;
+
+public class Bus extends Transport<DriverD> {
+    private Capacity capacity;
+//    private Map<Transport,Mechanic> mechanic ;
+
+    public Bus(String brand, String model, double engineCapacity, DriverD driver, Map<Transport,Mechanic> mechanic, Capacity capacity) {
+        super(brand, model, engineCapacity, driver, mechanic);
+        this.capacity=capacity;
+    }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        if (!super.equals(o)) return false;
+//        Bus bus = (Bus) o;
+//        return mechanic.equals(bus.mechanic);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(super.hashCode(), mechanic);
+//    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Bus bus = (Bus) o;
+        return capacity == bus.capacity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), capacity);
+    }
+
+    @Override
+    public boolean diagnostics() throws DiagnosticException {
+        return false;
     }
 
     @Override
@@ -34,5 +76,25 @@ public class Bus extends Transport<DriverD> {
         int maxSpeed = 160;
         int speed = (int) (minSpeed + (maxSpeed-minSpeed)*Math.random());
         System.out.println("Максимальная скорость автобуса"+speed);
+    }
+
+    public Capacity getCapacity() {
+        return capacity;
+    }
+    public void printType() {
+        if(getCapacity() == Capacity.ESPECIALLY_SMALL ){
+            System.out.println("До 10");
+        } else if(getCapacity() == Capacity.SMALL) {
+            System.out.println("До до 25");
+        }else if(getCapacity() == Capacity.AVERAGE) {
+            System.out.println("От 40 до 50");
+        }else if(getCapacity() == Capacity.BIG) {
+            System.out.println("От 60 до 80");}
+        else if(getCapacity() == Capacity.EXTRA_LARGE) {
+            System.out.println("От 100 до 120");}
+        else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+
     }
 }
