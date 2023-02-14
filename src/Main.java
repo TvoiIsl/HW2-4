@@ -56,6 +56,11 @@ public class Main {
         serviceStation.addMechanic(car1,VadikB);
         serviceStation.addMechanic(car2,VadikB);
         serviceStation.allMechanic();
+        serviceStation.autoQueue(car2);
+        serviceStation.autoQueue(car3);
+        serviceStation.autoQueue(car4);
+
+        serviceStation.passed();
 //        serviceStation.addDriver(driverB1);
 //        serviceStation.addDriver(driverB3);
 //        serviceStation.addDriver(driverB3);

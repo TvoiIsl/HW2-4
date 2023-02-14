@@ -5,7 +5,28 @@ import java.util.*;
 public class ServiceStation {
 //    private Queue serviceStation = new LinkedList();
     private Map<Transport,Mechanic>mechanics=new HashMap<>();
+
     private Set<Driver>driver=new HashSet<>();
+    private Queue serviceStation = new LinkedList();
+
+    public void autoQueue(Transport transport){
+        boolean check = transport instanceof Bus;
+        if( !check ){
+            serviceStation.add(transport);
+            System.out.println(transport.getBrand()+ " добавить ТС в очередь!");
+        }else {
+            System.out.println("Автобусам нельзя в сервис!");
+        }
+
+    }
+        public void passed (){
+
+//        serviceStation.poll();
+        if (serviceStation.poll()!=null){
+            System.out.println("Машина продиагностирована");
+            System.out.println("ТС ждет ТО " + serviceStation.size());
+        }
+    }
     public void addMechanic(Transport transport,Mechanic mechanic){
         mechanics.put(transport,mechanic);
             System.out.println("ТС "+transport.getBrand()+" добавлен механик "+mechanic.getName()+" из компании "+mechanic.getCompany());

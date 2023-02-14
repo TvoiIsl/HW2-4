@@ -1,6 +1,7 @@
 package Transport;
 
-public enum Capacity {ESPECIALLY_SMALL(null,10),
+public enum Capacity {
+    ESPECIALLY_SMALL(null,10),
     SMALL(null,25),
     AVERAGE(40,50),
     BIG(60,80),
