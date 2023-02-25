@@ -36,12 +36,12 @@ public abstract class Transport<T extends Driver> implements Competing {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transport<?> transport = (Transport<?>) o;
-        return mechanic.equals(transport.mechanic);
+        return Double.compare(transport.engineCapacity, engineCapacity) == 0 && brand.equals(transport.brand) && model.equals(transport.model) && driver.equals(transport.driver) && mechanic.equals(transport.mechanic);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mechanic);
+        return Objects.hash(brand, model, engineCapacity, driver, mechanic);
     }
 
     public Map<Transport, Mechanic> getMechanic() {
